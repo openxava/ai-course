@@ -12,19 +12,22 @@ import org.openxava.calculators.ICalculator;
  */
 @Entity
 @Getter @Setter
-@View(name="Complete", members=
-    "claimInfo [" +
-        "claimNumber;" +
-        "policy;" +
-        "dateOfIncident, dateOfClaim;" +
-        "status;" +
-        "amount;" +
-    "];" +
-    "details [" +
-        "description;" +
-        "location;" +
-    "]"
-)
+@Views({
+    @View(name="Complete", members=
+        "claimInfo [" +
+            "claimNumber;" +
+            "policy;" +
+            "dateOfIncident, dateOfClaim;" +
+            "status;" +
+            "amount;" +
+        "];" +
+        "details [" +
+            "description;" +
+            "location;" +
+        "]"
+    ),
+    @View(name="Simple", members="claimNumber")
+})
 public class Claim {
     
     @Id
@@ -37,7 +40,7 @@ public class Claim {
     private String claimNumber;
     
     @ManyToOne(optional = false)
-    @ReferenceView("Complete")
+    @ReferenceView("WithCustomer")
     private Policy policy;
     
     @Required

@@ -13,19 +13,23 @@ import org.openxava.calculators.ICalculator;
  */
 @Entity
 @Getter @Setter
-@View(name="Complete", members=
-    "policyInfo [" +
-        "policyNumber;" +
-        "customer;" +
-        "startDate, endDate;" +
-        "status;" +
-        "premium;" +
-        "coverageType;" +
-        "deductible;" +
-    "];" +
-    "vehicles;" +
-    "claims"
-)
+@Views({
+    @View(name="Complete", members=
+        "policyInfo [" +
+            "policyNumber;" +
+            "customer;" +
+            "startDate, endDate;" +
+            "status;" +
+            "premium;" +
+            "coverageType;" +
+            "deductible;" +
+        "];" +
+        "vehicles;" +
+        "claims"
+    ),
+    @View(name="Simple", members="policyNumber"),
+    @View(name="WithCustomer", members="policyNumber; customer")
+})
 public class Policy {
     
     @Id
@@ -38,7 +42,7 @@ public class Policy {
     private String policyNumber;
     
     @ManyToOne(optional = false)
-    @ReferenceView("Complete")
+    @ReferenceView("Simple")
     private Customer customer;
     
     @Required

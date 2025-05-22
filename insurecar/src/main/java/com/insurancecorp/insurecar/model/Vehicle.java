@@ -10,19 +10,22 @@ import java.math.BigDecimal;
  */
 @Entity
 @Getter @Setter
-@View(name="Complete", members=
-    "vehicleInfo [" +
-        "make, model;" +
-        "year, color;" +
-        "licensePlate;" +
-        "vin;" +
-    "];" +
-    "technicalInfo [" +
-        "engineType;" +
-        "mileage;" +
-        "value;" +
-    "]"
-)
+@Views({
+    @View(name="Complete", members=
+        "vehicleInfo [" +
+            "make, model;" +
+            "year, color;" +
+            "licensePlate;" +
+            "vin;" +
+        "];" +
+        "technicalInfo [" +
+            "engineType;" +
+            "mileage;" +
+            "value;" +
+        "]"
+    ),
+    @View(name="Simple", members="make, model, year, licensePlate")
+})
 public class Vehicle {
     
     @Id
@@ -62,7 +65,7 @@ public class Vehicle {
     private BigDecimal value;
     
     @ManyToOne
-    @ReferenceView("Complete")
+    @ReferenceView("WithCustomer")
     private Policy policy;
     
     /**

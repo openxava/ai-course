@@ -10,15 +10,18 @@ import java.util.Collection;
  */
 @Entity
 @Getter @Setter
-@View(name="Complete", members=
-    "personalInfo [" +
-        "firstName, lastName;" +
-        "email, phoneNumber;" +
-        "dateOfBirth;" +
-        "address;" +
-    "];" +
-    "policies"
-)
+@Views({
+    @View(name="Complete", members=
+        "personalInfo [" +
+            "firstName, lastName;" +
+            "email, phoneNumber;" +
+            "dateOfBirth;" +
+            "address;" +
+        "];" +
+        "policies"
+    ),
+    @View(name="Simple", members="firstName, lastName")
+})
 public class Customer {
     
     @Id
