@@ -11,11 +11,14 @@ import java.math.BigDecimal;
 @Entity
 @Getter @Setter
 @View(members=
+    "vehicleData [#" +
     "make, model;" +
     "year, color;" +
     "licensePlate, vin;" +
     "engineType, mileage;" +
-    "value"
+    "value;" +
+    "];" +
+    "policy"
 )
 @Views({
     @View(name="Complete", members=
