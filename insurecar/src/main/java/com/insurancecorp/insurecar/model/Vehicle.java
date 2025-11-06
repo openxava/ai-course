@@ -10,6 +10,13 @@ import java.math.BigDecimal;
  */
 @Entity
 @Getter @Setter
+@View(members=
+    "make, model;" +
+    "year, color;" +
+    "licensePlate, vin;" +
+    "engineType, mileage;" +
+    "value"
+)
 @Views({
     @View(name="Complete", members=
         "vehicleInfo [" +
