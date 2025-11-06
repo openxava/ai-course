@@ -64,6 +64,7 @@ public class Policy {
     
     @Required
     @Column(length = 50)
+    @DisplaySize(30)
     private String coverageType; // BASIC, COMPREHENSIVE, THIRD_PARTY
     
     @Money

@@ -34,10 +34,12 @@ public class Vehicle {
     
     @Required
     @Column(length = 50)
+    @DisplaySize(30)
     private String make;
     
     @Required
     @Column(length = 50)
+    @DisplaySize(30)
     private String model;
     
     @Required

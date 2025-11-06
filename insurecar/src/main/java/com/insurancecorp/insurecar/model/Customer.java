@@ -30,10 +30,12 @@ public class Customer {
     
     @Required
     @Column(length = 50)
+    @DisplaySize(30)
     private String firstName;
     
     @Required
     @Column(length = 50)
+    @DisplaySize(30)
     private String lastName;
     
     @Required
